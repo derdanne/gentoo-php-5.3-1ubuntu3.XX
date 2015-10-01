@@ -8,7 +8,8 @@ PHP 5.3 in production services, i ported the php package from Ubuntu Precise.
 https://launchpad.net/ubuntu/precise/+source/php5
 
 You can use this as a local Portage overlay in your Funtoo / Gentoo Setup. You have to 
-unmask >=dev-lang/php-5.3.10-r19 and emerge =app-eselect/eselect-php-0.7.1-r9999
+unmask >=dev-lang/php-5.3.10-r20 and emerge =app-eselect/eselect-php-0.7.1-r9999. Make sure you have 
+a sys-devel/bison 2.X installed, else you should do a emerge -1 "=sys-devel/bison-2.7.1". 
 
 I use the following USE flags to compile the package, any other USE flags are not tested! 
 
