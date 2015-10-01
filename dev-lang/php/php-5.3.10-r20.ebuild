@@ -299,7 +299,7 @@ src_prepare() {
 		EPATCH_MULTI_MSG="Applying generic patches and fixes from upstream..." epatch
 
     # Backport patches from Ubuntu
-	epatch "${FILESDIR}"/php5_5.3.10-1ubuntu3.19.patch
+	epatch "${FILESDIR}"/php5_5.3.10-1ubuntu3.20.patch
     # Compatibility patches Ubuntu -> Gentoo
 	epatch "${FILESDIR}"/node.lo_error.patch
 	epatch "${FILESDIR}"/depr_pcre_info.patch
