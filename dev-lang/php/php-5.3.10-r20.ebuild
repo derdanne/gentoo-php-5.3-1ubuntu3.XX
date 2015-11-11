@@ -349,6 +349,9 @@ src_prepare() {
 			$(grep -l divert $(find . -name '*.m4') configure.in) || die
 	fi
 	eautoreconf --force -W no-cross
+
+    # get correct Apache MPM in Gentoo
+    epatch "${FILESDIR}"/get_correct_apache_mpm.patch
 }
 
 src_configure() {
@@ -410,13 +413,6 @@ src_configure() {
 	$(use_with snmp snmp )
 	$(use_enable soap soap )
 	$(use_enable sockets sockets )"
-	if version_is_at_least 5.3.16-r2; then
-		my_conf+=" $(use_with sqlite2 sqlite /usr) "
-		use sqlite2 && my_conf+=" $(use_enable unicode sqlite-utf8)"
-	else
-		my_conf+=" $(use_with sqlite sqlite /usr) "
-		use sqlite && my_conf+=" $(use_enable unicode sqlite-utf8)"
-	fi
 	my_conf+="
 	$(use_with sqlite sqlite3 /usr)
 	$(use_with sybase-ct sybase-ct /usr)
