@@ -87,7 +87,7 @@ IUSE="${IUSE} bcmath berkdb bzip2 calendar cdb cjk
 	+xml xmlreader xmlwriter xmlrpc xpm xslt zip zlib"
 
 DEPEND="
-	>=app-admin/eselect-php-0.7.1-r3[apache2?,fpm?]
+	>=app-eselect/eselect-php-0.7.1-r9999[apache2?,fpm?]
 	>=dev-libs/libpcre-8.32[unicode]
 	apache2? ( www-servers/apache[threads=] )
 	berkdb? ( =sys-libs/db-4* )
@@ -299,7 +299,7 @@ src_prepare() {
 		EPATCH_MULTI_MSG="Applying generic patches and fixes from upstream..." epatch
 
     # Backport patches from Ubuntu
-	epatch "${FILESDIR}"/php5_5.3.10-1ubuntu3.18.patch
+	epatch "${FILESDIR}"/php5_5.3.10-1ubuntu3.22.patch
     # Compatibility patches Ubuntu -> Gentoo
 	epatch "${FILESDIR}"/node.lo_error.patch
 	epatch "${FILESDIR}"/depr_pcre_info.patch
@@ -349,6 +349,9 @@ src_prepare() {
 			$(grep -l divert $(find . -name '*.m4') configure.in) || die
 	fi
 	eautoreconf --force -W no-cross
+
+    # get correct Apache MPM in Gentoo
+    epatch "${FILESDIR}"/get_correct_apache_mpm.patch
 }
 
 src_configure() {
@@ -410,13 +413,6 @@ src_configure() {
 	$(use_with snmp snmp )
 	$(use_enable soap soap )
 	$(use_enable sockets sockets )"
-	if version_is_at_least 5.3.16-r2; then
-		my_conf+=" $(use_with sqlite2 sqlite /usr) "
-		use sqlite2 && my_conf+=" $(use_enable unicode sqlite-utf8)"
-	else
-		my_conf+=" $(use_with sqlite sqlite /usr) "
-		use sqlite && my_conf+=" $(use_enable unicode sqlite-utf8)"
-	fi
 	my_conf+="
 	$(use_with sqlite sqlite3 /usr)
 	$(use_with sybase-ct sybase-ct /usr)
