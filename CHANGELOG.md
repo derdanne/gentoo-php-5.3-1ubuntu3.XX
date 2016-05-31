@@ -1,6 +1,8 @@
 ##2016-05-19 - Release 5.3.10-1ubuntu3.23
 ###Summary
 
+(https://launchpad.net/ubuntu/+source/php5/5.3.10-1ubuntu3.23)
+
 php5 (5.3.10-1ubuntu3.23) precise-security; urgency=medium
 
   * SECURITY UPDATE: heap corruption in tar/zip/phar parser
