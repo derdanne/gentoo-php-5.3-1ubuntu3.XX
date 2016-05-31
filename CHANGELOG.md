@@ -1,3 +1,122 @@
+##2016-05-19 - Release 5.3.10-1ubuntu3.23
+###Summary
+
+php5 (5.3.10-1ubuntu3.23) precise-security; urgency=medium
+
+  * SECURITY UPDATE: heap corruption in tar/zip/phar parser
+    - debian/patches/CVE-2016-4342.patch: remove UMR when size is 0 in
+      ext/phar/phar_object.c.
+    - CVE-2016-4342
+  * SECURITY UPDATE: uninitialized pointer in phar_make_dirstream()
+    - debian/patches/CVE-2016-4343.patch: check lengths in
+      ext/phar/dirstream.c, ext/phar/tar.c.
+    - CVE-2016-4343
+  * SECURITY UPDATE: bcpowmod accepts negative scale and corrupts _one_
+    definition
+    - debian/patches/CVE-2016-4537.patch: properly detect scale in
+      ext/bcmath/bcmath.c, add test to ext/bcmath/tests/bug72093.phpt.
+    - CVE-2016-4537
+    - CVE-2016-4538
+  * SECURITY UPDATE: xml_parse_into_struct segmentation fault
+    - debian/patches/CVE-2016-4539.patch: check parser->level in
+      ext/xml/xml.c, added test to ext/xml/tests/bug72099.phpt.
+    - CVE-2016-4539
+  * SECURITY UPDATE: out-of-bounds reads in zif_grapheme_stripos and
+    zif_grapheme_strpos with negative offset
+    - debian/patches/CVE-2016-4540.patch: check bounds in
+      ext/intl/grapheme/grapheme_string.c, added test to
+      ext/intl/tests/bug72061.phpt.
+    - CVE-2016-4540
+    - CVE-2016-4541
+  * SECURITY UPDATE: out of bounds heap read access in exif header
+    processing
+    - debian/patches/CVE-2016-4542.patch: check sizes and length in
+      ext/exif/exif.c.
+    - CVE-2016-4542
+    - CVE-2016-4543
+    - CVE-2016-4544
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Thu, 19 May 2016 12:54:58 -0400
+
+##2016-04-19 - Release 5.3.10-1ubuntu3.22
+###Summary
+
+(https://launchpad.net/ubuntu/+source/php5/5.3.10-1ubuntu3.22)
+
+php5 (5.3.10-1ubuntu3.22) precise-security; urgency=medium
+
+  * SECURITY UPDATE: directory traversal in ZipArchive::extractTo
+    - debian/patches/CVE-2014-9767.patch: use proper path in
+      ext/zip/php_zip.c, added test to ext/zip/tests/bug70350.phpt.
+    - CVE-2014-9767
+  * SECURITY UPDATE: type confusion issue in SoapClient
+    - debian/patches/CVE-2015-8835.patch: check types in
+      ext/soap/php_http.c.
+    - CVE-2015-8835
+    - CVE-2016-3185
+  * SECURITY UPDATE: mysqlnd is vulnerable to BACKRONYM
+    - debian/patches/CVE-2015-8838.patch: fix ssl handling in
+      ext/mysqlnd/mysqlnd.c.
+    - CVE-2015-8838
+  * SECURITY UPDATE: stack overflow when decompressing tar archives
+    - debian/patches/CVE-2016-2554.patch: handle non-terminated linknames
+      in ext/phar/tar.c.
+    - CVE-2016-2554
+  * SECURITY UPDATE: use-after-free in WDDX
+    - debian/patches/CVE-2016-3141.patch: fix stack in ext/wddx/wddx.c,
+      added test to ext/wddx/tests/bug71587.phpt.
+    - CVE-2016-3141
+  * SECURITY UPDATE: out-of-Bound Read in phar_parse_zipfile()
+    - debian/patches/CVE-2016-3142.patch: check bounds in ext/phar/zip.c.
+    - CVE-2016-3142
+  * SECURITY UPDATE: libxml_disable_entity_loader setting is shared between
+    threads
+    - debian/patches/bug64938.patch: enable entity loader in
+      ext/libxml/libxml.c.
+    - No CVE number
+  * SECURITY UPDATE: openssl_random_pseudo_bytes() is not cryptographically
+    secure
+    - debian/patches/bug70014.patch: use RAND_bytes instead of deprecated
+      RAND_pseudo_bytes in ext/openssl/openssl.c.
+    - No CVE number
+  * SECURITY UPDATE: buffer over-write in finfo_open with malformed magic
+    file
+    - debian/patches/bug71527.patch: properly calculate length in
+      ext/fileinfo/libmagic/funcs.c, added test to
+      ext/fileinfo/tests/bug71527.magic.
+    - CVE number pending
+  * SECURITY UPDATE: integer overflow in php_raw_url_encode
+    - debian/patches/bug71798.patch: use size_t in ext/standard/url.c.
+    - CVE number pending
+  * SECURITY UPDATE: invalid memory write in phar on filename containing
+    NULL
+    - debian/patches/bug71860.patch: require valid paths in
+      ext/phar/phar.c, ext/phar/phar_object.c.
+    - CVE number pending
+  * SECURITY UPDATE: invalid negative size in mbfl_strcut
+    - debian/patches/bug71906.patch: fix length checks in
+      ext/mbstring/libmbfl/mbfl/mbfilter.c.
+    - CVE number pending
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Tue, 19 Apr 2016 16:55:56 -0400
+
+##2015-10-27 - Release 5.3.10-1ubuntu3.21
+###Summary
+
+(https://launchpad.net/ubuntu/+source/php5/5.3.10-1ubuntu3.21)
+
+php5 (5.3.10-1ubuntu3.21) precise-security; urgency=medium
+
+  * SECURITY UPDATE: null pointer dereference in phar_get_fp_offset()
+    - debian/patches/CVE-2015-7803.patch: check link in ext/phar/util.c.
+    - CVE-2015-7803
+  * SECURITY UPDATE: uninitialized pointer in phar_make_dirstream()
+    - debian/patches/CVE-2015-7804.patch: check filename length in
+      ext/phar/util.c, ext/phar/zip.c.
+    - CVE-2015-7804
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Tue, 27 Oct 2015 16:59:36 -0400
+
 ##2015-10-01 - Release 5.3.10-1ubuntu3.20
 ###Summary
 
