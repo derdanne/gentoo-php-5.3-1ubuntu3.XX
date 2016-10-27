@@ -1,3 +1,191 @@
+##2016-10-03 - Release 5.3.10-1ubuntu3.25
+###Summary
+
+php5 (5.3.10-1ubuntu3.25) precise-security; urgency=medium
+
+  * SECURITY UPDATE: denial of service or code execution via crafted
+    serialized data
+    - debian/patches/CVE-2016-7124-1.patch: destroy broken object when
+      unserializing in ext/standard/var_unserializer.c*.
+    - debian/patches/CVE-2016-7124-2.patch: improve fix in
+      ext/standard/var_unserializer.c*, added test to
+      ext/standard/tests/strings/bug72663_3.phpt.
+    - CVE-2016-7124
+  * SECURITY UPDATE: arbitrary-type session data injection
+    - debian/patches/CVE-2016-7125.patch: consume data even if not storing
+      in ext/session/session.c, added test to
+      ext/session/tests/bug72681.phpt.
+    - debian/patches/CVE-2016-7125-2.patch: remove unused label in
+      ext/session/session.c.
+    - CVE-2016-7125
+  * SECURITY UPDATE: denial of service and possible code execution in
+    imagegammacorrect function
+    - debian/patches/CVE-2016-7127.patch: check gamma values in
+      ext/gd/gd.c, added test to ext/gd/tests/bug72730.phpt.
+    - CVE-2016-7127
+  * SECURITY UPDATE: information disclosure via exif_process_IFD_in_TIFF
+    - debian/patches/CVE-2016-7128.patch: properly handle thumbnails in
+      ext/exif/exif.c.
+    - CVE-2016-7128
+  * SECURITY UPDATE: denial of service and possible code execution via
+    invalid ISO 8601 time value
+    - debian/patches/CVE-2016-7129.patch: properly handle strings in
+      ext/wddx/wddx.c, added test to ext/wddx/tests/bug72749.phpt.
+    - CVE-2016-7129
+  * SECURITY UPDATE: denial of service and possible code execution via
+    invalid base64 binary value
+    - debian/patches/CVE-2016-7130.patch: properly handle string in
+      ext/wddx/wddx.c, added test to ext/wddx/tests/bug72750.phpt.
+    - CVE-2016-7130
+  * SECURITY UPDATE: denial of service and possible code execution via
+    malformed wddxPacket XML document
+    - debian/patches/CVE-2016-7131.patch: added check to ext/wddx/wddx.c,
+      added tests to ext/wddx/tests/bug72790.phpt,
+      ext/wddx/tests/bug72799.phpt.
+    - CVE-2016-7131
+    - CVE-2016-7132
+  * SECURITY UPDATE: denial of service and possible code execution via
+    partially constructed object
+    - debian/patches/CVE-2016-7411.patch: properly handle partial object in
+      ext/standard/var_unserializer.*, added test to
+      ext/standard/tests/serialize/bug73052.phpt.
+    - CVE-2016-7411
+  * SECURITY UPDATE: denial of service and possible code execution via
+    crafted field metadata in MySQL driver
+    - debian/patches/CVE-2016-7412.patch: validate field length in
+      ext/mysqlnd/mysqlnd_wireprotocol.c.
+    - CVE-2016-7412
+  * SECURITY UPDATE: denial of service and possible code execution via
+    malformed wddxPacket XML document
+    - debian/patches/CVE-2016-7413.patch: fixed use-after-free in
+      ext/wddx/wddx.c, added test to ext/wddx/tests/bug72860.phpt.
+    - CVE-2016-7413
+  * SECURITY UPDATE: denial of service and possible code execution via
+    crafted PHAR archive
+    - debian/patches/CVE-2016-7414.patch: validate signatures in
+      ext/phar/util.c, ext/phar/zip.c.
+    - CVE-2016-7414
+  * SECURITY UPDATE: denial of service and possible code execution via
+    MessageFormatter::formatMessage call with a long first argument
+    - debian/patches/CVE-2016-7416.patch: added locale length check to
+      ext/intl/msgformat/msgformat_format.c.
+    - CVE-2016-7416
+  * SECURITY UPDATE: denial of service or code execution via crafted
+    serialized data
+    - debian/patches/CVE-2016-7417.patch: added type check to
+      ext/spl/spl_array.c.
+    - CVE-2016-7417
+  * SECURITY UPDATE: denial of service and possible code execution via
+    malformed wddxPacket XML document
+    - debian/patches/CVE-2016-7418.patch: fix out-of-bounds read in
+      ext/wddx/wddx.c, added test to ext/wddx/tests/bug73065.phpt.
+    - CVE-2016-7418
+
+ -- Marc Deslauriers <email address hidden>  Mon, 03 Oct 2016 07:39:03 -0400
+
+##2016-08-01 - Release 5.3.10-1ubuntu3.24
+###Summary
+
+(https://launchpad.net/ubuntu/+source/php5/5.3.10-1ubuntu3.24)
+
+php5 (5.3.10-1ubuntu3.24) precise-security; urgency=medium
+
+  * SECURITY UPDATE: segfault in SplMinHeap::compare
+    - debian/patches/CVE-2015-4116.patch: properly handle count in
+      ext/spl/spl_heap.c, added test to ext/spl/tests/bug69737.phpt.
+    - CVE-2015-4116
+  * SECURITY UPDATE: denial of service via recursive method calls
+    - debian/patches/CVE-2015-8873.patch: add limit to
+      Zend/zend_exceptions.c, add tests to
+      ext/standard/tests/serialize/bug69152.phpt,
+      ext/standard/tests/serialize/bug69793.phpt,
+      sapi/cli/tests/005.phpt.
+    - CVE-2015-8873
+  * SECURITY UPDATE: denial of service or code execution via crafted
+    serialized data
+    - debian/patches/CVE-2015-8876.patch: fix logic in
+      Zend/zend_exceptions.c, added test to Zend/tests/bug70121.phpt.
+    - CVE-2015-8876
+  * SECURITY UPDATE: XSS in header() with Internet Explorer (LP: #1594041)
+    - debian/patches/CVE-2015-8935.patch: update header handling to
+      RFC 7230 in main/SAPI.c, added tests to
+      ext/standard/tests/general_functions/bug60227_*.phpt.
+    - CVE-2015-8935
+  * SECURITY UPDATE: get_icu_value_internal out-of-bounds read
+    - debian/patches/CVE-2016-5093.patch: add enough space in
+      ext/intl/locale/locale_methods.c, added test to
+      ext/intl/tests/bug72241.phpt.
+    - CVE-2016-5093
+  * SECURITY UPDATE: integer overflow in php_html_entities()
+    - debian/patches/CVE-2016-5094.patch: don't create strings with lengths
+      outside int range in ext/standard/html.c.
+    - CVE-2016-5094
+  * SECURITY UPDATE: string overflows in string add operations
+    - debian/patches/CVE-2016-5095.patch: check for size overflow in
+      Zend/zend_operators.c.
+    - CVE-2016-5095
+  * SECURITY UPDATE: int/size_t confusion in fread
+    - debian/patches/CVE-2016-5096.patch: check string length in
+      ext/standard/file.c, added test to
+      ext/standard/tests/file/bug72114.phpt.
+    - CVE-2016-5096
+  * SECURITY UPDATE: memory leak and buffer overflow in FPM
+    - debian/patches/CVE-2016-5114.patch: check buffer length in
+      sapi/fpm/fpm/fpm_log.c.
+    - CVE-2016-5114
+  * SECURITY UPDATE: proxy request header vulnerability (httpoxy)
+    - debian/patches/CVE-2016-5385.patch: only use HTTP_PROXY from the
+      local environment in ext/standard/basic_functions.c, main/SAPI.c,
+      main/php_variables.c.
+    - CVE-2016-5385
+  * SECURITY UPDATE: inadequate error handling in bzread()
+    - debian/patches/CVE-2016-5399.patch: do not allow reading past error
+      read in ext/bz2/bz2.c.
+    - CVE-2016-5399
+  * SECURITY UPDATE: integer overflows in mcrypt
+    - debian/patches/CVE-2016-5769.patch: check for overflow in
+      ext/mcrypt/mcrypt.c.
+    - CVE-2016-5769
+  * SECURITY UPDATE: double free corruption in wddx_deserialize
+    - debian/patches/CVE-2016-5772.patch: prevent double-free in
+      ext/wddx/wddx.c, added test to ext/wddx/tests/bug72340.phpt.
+    - CVE-2016-5772
+  * SECURITY UPDATE: buffer overflow in php_url_parse_ex()
+    - debian/patches/CVE-2016-6288.patch: handle length in
+      ext/standard/url.c.
+    - CVE-2016-6288
+  * SECURITY UPDATE: integer overflow in the virtual_file_ex function
+    - debian/patches/CVE-2016-6289.patch: properly check path_length in
+      Zend/zend_virtual_cwd.c.
+    - CVE-2016-6289
+  * SECURITY UPDATE: use after free in unserialize() with unexpected
+    session deserialization
+    - debian/patches/CVE-2016-6290.patch: destroy var_hash properly in
+      ext/session/session.c, added test to ext/session/tests/bug72562.phpt.
+    - CVE-2016-6290
+  * SECURITY UPDATE: out of bounds read in exif_process_IFD_in_MAKERNOTE
+    - debian/patches/CVE-2016-6291.patch: add more bounds checks to
+      ext/exif/exif.c.
+    - CVE-2016-6291
+  * SECURITY UPDATE: locale_accept_from_http out-of-bounds access
+    - debian/patches/CVE-2016-6294.patch: check length in
+      ext/intl/locale/locale_methods.c, added test to
+      ext/intl/tests/bug72533.phpt.
+    - CVE-2016-6294
+  * SECURITY UPDATE: heap buffer overflow in simplestring_addn
+    - debian/patches/CVE-2016-6296.patch: prevent overflows in
+      ext/xmlrpc/libxmlrpc/simplestring.*.
+    - CVE-2016-6296
+  * SECURITY UPDATE: integer overflow in php_stream_zip_opener
+    - debian/patches/CVE-2016-6297.patch: use size_t in
+      ext/zip/zip_stream.c.
+    - CVE-2016-6297
+  * debian/patches/fix_exif_tests.patch: fix exif test results after
+    security changes.
+
+ -- Marc Deslauriers <email address hidden>  Mon, 01 Aug 2016 13:27:52 -0400
+
+
 ##2016-05-19 - Release 5.3.10-1ubuntu3.23
 ###Summary
 
